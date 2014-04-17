@@ -8,7 +8,6 @@ google.setOnLoadCallback(function() {
 });
 
 function doTheTreeViz(control) {
-
   var svg = control.svg;
 
   var force = control.force;
@@ -231,7 +230,6 @@ function doTheTreeViz(control) {
   function getColor(d) {
     return control.options.nodeFocus && d.isCurrentlyFocused ? control.options.nodeFocusColor : control.color(d.group);
   }
-
 }
 
 function makeRadius(control, d) {
@@ -290,7 +288,7 @@ function initialize() {
   var newoptions = {
     nodeLabel: "label",
     nodeResize: "count",
-    height: 900,
+    height: 960,
     nodeFocus: true,
     radius: 3,
     charge: -500
@@ -363,17 +361,19 @@ function initialize() {
 }
 
 function getTheData(control) {
+
   var dataPromise = getTheRawData();
-  var massage = $.Deferred();
-  dataPromise.done(function(data) {
-    // need to massage it
-    massage.resolve(dataMassage(control, data));
-  })
-    .fail(function(error) {
-      console.log(error);
-      massage.reject(error);
+    var massage = $.Deferred();
+    dataPromise.done ( function (data) {
+        // need to massage it
+        massage.resolve ( dataMassage (control,data));    
+    })
+    .fail (function (error) {
+        console.log (error);
+        massage.reject(error);
     });
-  return massage.promise();
+    return massage.promise();  
+
 }
 
 function dataMassage(control, data) {
@@ -439,7 +439,6 @@ function dataMassage(control, data) {
         page.dim.width + options.labelOffset;
       c++;
     }
-
   }
 
   return {
@@ -461,40 +460,24 @@ function findOrAddPage(control, page, nodes) {
   return nodes[nodes.push(page) - 1];
 }
 
-// modify with your proxy and dataurl
-// take the raw data and prepare it for d3
-function getParameterByName(name) {
-  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-// modify with your proxy and dataurl
+// set up dataurl
 // take the raw data and prepare it for d3
 function getTheRawData() {
-  // here's a php proxy to make jsonP
-  var proxyUrl = "http://xliberation.com/s/proxyphp.php";
-  //var proxyUrl = "proxyphp.php";
-  var blogOnly = "0B92ExLh4POiZNGJVcS0tRE96Tmc";
-
-  var fileid = getParameterByName('data') || blogOnly;
-
-  var dataUrl = "https://googledrive.com/host/" + fileid;
+  var dataUrl = "data/test.json";
   // promise will be resolved when done
-  return getPromiseData(dataUrl, proxyUrl);
+  return getPromiseData(dataUrl);
 }
 
 // no need to touch this
 // general deferred handler for getting json data through proxy and creating promise
-function getPromiseData(url, proxyUrl) {
+function getPromiseData(url) {
   var deferred = $.Deferred();
-  var u = proxyUrl + "?url=" + encodeURIComponent(url);
+  var u = url;
 
   $.getJSON(u, null,
     function(data) {
       deferred.resolve(data);
-      console.log(data);
+      console.log("test data: ", data);
     })
     .error(function(res, status, err) {
       deferred.reject("error " + err + " for " + url);
