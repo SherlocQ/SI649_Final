@@ -84,8 +84,8 @@ function doTheTreeViz(control) {
           }
         }, control.clickHack);
       }
-    })
-    .call(force.drag);
+    });
+    // .call(force.drag);
 
   nodeEnter
     .append("svg:circle")
