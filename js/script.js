@@ -287,7 +287,7 @@ function initialize() {
   //some basic options
   var newoptions = {
     nodeLabel: "label",
-    nodeResize: "count",
+    nodeResize: "rating",
     height: 960,
     nodeFocus: true,
     radius: 3,
@@ -337,7 +337,6 @@ function initialize() {
   $('body').append(control.scratch);
 
   getTheData(control).then(function(data) {
-
     control.data = data;
     control.nodes = data.nodes;
     control.links = data.links;
@@ -363,16 +362,16 @@ function initialize() {
 function getTheData(control) {
 
   var dataPromise = getTheRawData();
-    var massage = $.Deferred();
-    dataPromise.done ( function (data) {
-        // need to massage it
-        massage.resolve ( dataMassage (control,data));    
-    })
-    .fail (function (error) {
-        console.log (error);
-        massage.reject(error);
+  var massage = $.Deferred();
+  dataPromise.done(function(data) {
+    // need to massage it
+    massage.resolve(dataMassage(control, data));
+  })
+    .fail(function(error) {
+      console.log(error);
+      massage.reject(error);
     });
-    return massage.promise();  
+  return massage.promise();
 
 }
 
@@ -381,14 +380,15 @@ function dataMassage(control, data) {
   var ind = data,
     nodes = [],
     links = [];
+  console.log("ind: ", data);
   // the tags are to be circles
   for (var i = 0; i < ind.length; i++) {
     ind[i].isCurrentlyFocused = false;
     nodes.push(ind[i]);
     // add links to pages
-    for (var j = 0; j < ind[i].pages.length; j++) {
+    for (var j = 0; j < ind[i].actors.length; j++) {
       //push this page as a node
-      var node = findOrAddPage(control, ind[i].pages[j], nodes);
+      var node = findOrAddPage(control, ind[i].actors[j], nodes);
       node.isCurrentlyFocused = false;
       // create a link
       var link = {
@@ -399,6 +399,7 @@ function dataMassage(control, data) {
       links.push(link);
     }
   }
+  console.log(links);
   // sort nodes alpha
   nodes.sort(function(a, b) {
     return a.name < b.name ? -1 : (a.name == b.name ? 0 : 1);
@@ -460,16 +461,16 @@ function findOrAddPage(control, page, nodes) {
   return nodes[nodes.push(page) - 1];
 }
 
-// set up dataurl
-// take the raw data and prepare it for d3
+// set up dataurl, take the raw data and prepare it for d3
+
 function getTheRawData() {
-  var dataUrl = "data/test.json";
+  var dataUrl = "data/test_2.json";
   // promise will be resolved when done
   return getPromiseData(dataUrl);
 }
 
-// no need to touch this
 // general deferred handler for getting json data through proxy and creating promise
+
 function getPromiseData(url) {
   var deferred = $.Deferred();
   var u = url;
@@ -477,7 +478,6 @@ function getPromiseData(url) {
   $.getJSON(u, null,
     function(data) {
       deferred.resolve(data);
-      console.log("test data: ", data);
     })
     .error(function(res, status, err) {
       deferred.reject("error " + err + " for " + url);

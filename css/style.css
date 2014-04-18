@@ -1,196 +1,241 @@
-body {
-position: relative;
-font-family: "Helvetica Neue", Helvetica, sans-serif;
-margin: 1em auto 4em auto;
-width: 960px;
+body
+{
+  position:relative;
+  font-family:"Helvetica Neue",Helvetica,sans-serif;
+  margin:1em auto 4em;
+  width:960px
 }
 
-h1 {
-font-size: 64px;
-font-weight: 300;
-letter-spacing: -2px;
-margin: .3em 0 .1em 0;
+h1
+{
+  font-size:64px;
+  font-weight:300;
+  letter-spacing:-2px;
+  margin:.3em 0 .1em
 }
 
-h2 {
-margin-top: 2em;
+h2
+{
+  margin-top:2em
 }
 
-h1, h2 {
-text-rendering: optimizeLegibility;
+h1,h2
+{
+  text-rendering:optimizeLegibility
 }
 
-h2 a {
-color: #ccc;
-left: -20px;
-position: absolute;
-width: 740px;
+h2 a
+{
+  color:#ccc;
+  left:-20px;
+  position:absolute;
+  width:740px
 }
 
-footer {
-font-size: small;
-margin-top: 8em;
+footer
+{
+  font-size:small;
+  margin-top:8em
 }
 
-header aside {
-margin-top: 20px;
+header aside
+{
+  margin-top:20px
 }
 
-header aside, footer aside {
-color: #636363;
-text-align: right;
+header aside,footer aside
+{
+  color:#636363;
+  text-align:right
 }
 
-aside {
-float:right;
-display:inline;
-font-size: small;
-}
-.attribution {
-font-size: small;
-margin-bottom: 2em;
+aside
+{
+  float:right;
+  display:inline;
+  font-size:small
 }
 
-body > p, li > p {
-line-height: 1.5em;
+.attribution
+{
+  font-size:small;
+  margin-bottom:2em
 }
 
-body > p {
-width: 720px;
+body > p,li > p
+{
+  line-height:1.5em
 }
 
-body > blockquote {
-width: 640px;
+body > p
+{
+  width:720px
 }
 
-li {
-width: 680px;
+body > blockquote
+{
+  width:640px
 }
 
-pre, code, textarea {
-font-family: "Menlo", monospace;
+li
+{
+  width:680px
 }
 
-code {
-line-height: 1em;
+pre,code,textarea
+{
+  font-family:"Menlo",monospace
 }
 
-textarea {
-font-size: 100%;
+code
+{
+  line-height:1em
 }
 
-body > pre {
-border-left: solid 2px #ccc;
-padding-left: 18px;
-margin: 2em 0 2em -20px;
+textarea
+{
+  font-size:100%
 }
 
-.html .value, .javascript .string, .javascript .regexp {
-color: #756bb1;
+body > pre
+{
+  border-left:solid 2px #ccc;
+  padding-left:18px;
+  margin:2em 0 2em -20px
 }
 
-.html .tag, .css .tag, .javascript .keyword {
-color: #3182bd;
+.html .value,.javascript .string,.javascript .regexp
+{
+  color:#756bb1
 }
 
-.comment {
-color: #636363;
+.html .tag,.css .tag,.javascript .keyword
+{
+  color:#3182bd
 }
 
-.html .doctype, .javascript .number {
-color: #31a354;
+.comment
+{
+  color:#636363
 }
 
-.html .attribute, .css .attribute, .javascript .class, .javascript .special {
-color: #e6550d;
+.html .doctype,.javascript .number
+{
+  color:#31a354
 }
 
-svg {
-font: 10px sans-serif;
+.html .attribute,.css .attribute,.javascript .class,.javascript .special
+{
+  color:#e6550d
 }
 
-.axis path, .axis line {
-fill: none;
-stroke: #000;
-shape-rendering: crispEdges;
+svg
+{
+  font:10px sans-serif
 }
 
-sup, sub {
-line-height: 0;
+.axis path,.axis line
+{
+  fill:none;
+  stroke:#000;
+  shape-rendering:crispEdges
 }
 
-q:before, blockquote:before {
-content: "?";
+sup,sub
+{
+  line-height:0
 }
 
-q:after, blockquote:after {
-content: "?";
+q:before,blockquote:before
+{
+  content:"?"
 }
 
-blockquote:before {
-position: absolute;
-left: 2em;
+q:after,blockquote:after
+{
+  content:"?"
 }
 
-blockquote:after {
-position: absolute;
+blockquote:before
+{
+  position:absolute;
+  left:2em
 }
 
-
-#chart {
-height: 600px;
-}
-.node rect {
-cursor: move;
-fill-opacity: .9;
-shape-rendering: crispEdges;
-}
-.node text {
-pointer-events: all;
-text-shadow: 0 1px 0 #fff;
-}
-.link {
-fill: none;
-stroke: #000;
-stroke-opacity: .2;
-}
-.link:hover {
-stroke-opacity: .5;
+blockquote:after
+{
+  position:absolute
 }
 
-circle.node-dot {
-fill: DarkSlateGray;
-stroke: SlateGray;
-stroke-width: 1px;
+#chart
+{
+  height:600px
 }
 
-
-line.link {
-fill: none;
-stroke: SlateGray;
-stroke-width: 1.5px;
+.node rect
+{
+  cursor:move;
+  fill-opacity:.9;
+  shape-rendering:crispEdges
 }
 
-marker#defaultMarker {
-fill: SlateGray;
+.node text
+{
+  pointer-events:all;
+  text-shadow:0 1px 0 #fff;
 }
 
-line.link.defaultMarker {
-stroke: SlateGray;
+.link
+{
+  fill:none;
+  stroke:#000;
+  stroke-opacity:.2
 }
 
-circle {
-fill: #ccc;
-stroke: #333;
-stroke-width: 1.5px;
+.link:hover
+{
+  stroke-opacity:.5
 }
 
-text {
-pointer-events: all;
+circle.node-dot
+{
+  fill:#2f4f4f;
+  stroke:#708090;
+  stroke-width:1px
 }
 
-text.shadow {
-stroke: #fff;
-stroke-width: 3px;
-stroke-opacity: .8;
+line.link
+{
+  fill:none;
+  stroke:#708090;
+  stroke-width:1.5px
+}
+
+marker#defaultMarker
+{
+  fill:#708090
+}
+
+line.link.defaultMarker
+{
+  stroke:#708090
+}
+
+circle
+{
+  fill:#ccc;
+  stroke:#333;
+  stroke-width:1.5px
+}
+
+text
+{
+  pointer-events:all
+}
+
+text.shadow
+{
+  stroke:#fff;
+  stroke-width:3px;
+  stroke-opacity:.8
 }
